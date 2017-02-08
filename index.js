@@ -6,8 +6,8 @@ require('esc-exit')();
 
 const storedVersions = JSON.parse(fs.readFileSync('my-versions.json', 'utf8'));
 const name2myVersion = storedVersions.reduce((res, {name, myVersion}) => {
-    res[name] = myVersion;
-return res;
+  res[name] = myVersion;
+  return res;
 }, {});
 
 new clui.Line()
@@ -30,7 +30,7 @@ function printVersions(versions) {
       .column(name, 20, [clc.cyan])
       .column(version, 20, [name2myVersion[name] !== version ? clc.green : clc.magenta])
       .store();
-});
+  });
 
   new clui.Line(lineBuffer).fill().store(); // blankLine
 
@@ -63,13 +63,13 @@ storedVersions.find(_ => _.name === 'node').versionGetter = async function nodeV
   return {
     name: 'node',
     version: (await request('https://nodejs.org/download/release/index.json', {json: true}))[0].version.substring(1)
-};
+  };
 };
 
 async function checkVersions() {
   const versions = await Promise.all(
     storedVersions.map(({name, tag = 'latest', versionGetter = npmVersionGetter}) => versionGetter({name, tag}))
-);
+  );
 
   printVersions(versions);
 }
