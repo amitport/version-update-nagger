@@ -1,5 +1,6 @@
 {
   "name": "version-update-nagger",
+  "private": true,
   "version": "1.0.0",
   "description": "pulls node and npm package updates",
   "main": "index.js",
