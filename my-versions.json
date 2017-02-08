@@ -1,0 +1,23 @@
+[
+  {
+    "name": "node",
+    "myVersion": "7.3.0"
+  },
+  {
+    "name": "angular",
+    "myVersion": "1.6.2"
+  },
+  {
+    "name": "angular-material",
+    "myVersion": "1.1.3"
+  },
+  {
+    "name": "jspm",
+    "tag": "beta",
+    "myVersion": "0.17.0-beta.38"
+  },
+  {
+    "name": "gulp-cli",
+    "myVersion": "1.2.2"
+  }
+]

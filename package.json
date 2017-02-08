@@ -1,0 +1,29 @@
+{
+  "name": "version-update-nagger",
+  "version": "1.0.0",
+  "description": "pulls node and npm package updates",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --harmony ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amitport/version-update-nagger.git"
+  },
+  "author": "Amit Portnoy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amitport/version-update-nagger/issues"
+  },
+  "homepage": "https://github.com/amitport/version-update-nagger#readme",
+  "dependencies": {
+    "cli-color": "^1.1.0",
+    "clui": "^0.3.1",
+    "esc-exit": "^1.0.0",
+    "request": "^2.79.0",
+    "request-promise-native": "^1.0.3"
+  },
+  "engines": {
+    "node" : "7"
+  }
+}
