@@ -8,8 +8,8 @@ class CliRenderer {
 
     new clui.Line()
       .padding(1)
-      .column('name', 20, [clc.blue])
-      .column('version', 20, [clc.blue])
+      .column('name', 20, [clc.bold])
+      .column('version', 20, [clc.bold])
       .output();
   }
 
