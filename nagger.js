@@ -5,8 +5,12 @@ const versionProviders = {
 
 class Nagger {
   constructor(myVersions, renderer) {
-    this.myVersions = myVersions;
     this.renderer = renderer;
+
+    this.untriggeredVersionRequests = Object.entries(myVersions).map(([name, {tag = 'latest', provider = 'npm'}]) => {
+      const versionProvider = versionProviders[provider];
+      return versionProvider.bind(versionProvider, {name, tag});
+    });
   }
 
   start() {
@@ -21,11 +25,7 @@ class Nagger {
   }
 
   async checkVersions() {
-    const versions = await Promise.all(
-      Object.entries(this.myVersions).map(([name, {tag = 'latest', provider = 'npm'}]) =>
-        versionProviders[provider]({name, tag}))
-    );
-    this.renderer.update(versions);
+    this.renderer.update(await Promise.all(this.untriggeredVersionRequests.map(_ => _())));
   }
 }
 
