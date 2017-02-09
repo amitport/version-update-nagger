@@ -20,7 +20,7 @@
     "version": "2.0.0-alpha.7",
     "tag": "next"
   },
-  "gulp-cli": {
-    "version": "1.2.2"
+  "gulp": {
+    "version": "3.9.1"
   }
 }
