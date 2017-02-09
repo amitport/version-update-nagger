@@ -4,12 +4,22 @@ const versionProviders = {
 };
 
 class Nagger {
-  constructor(myVersions, renderer) {
+  constructor({myVersions, renderer}) {
     this.renderer = renderer;
 
-    this.untriggeredVersionRequests = Object.entries(myVersions).map(([name, {tag = 'latest', provider = 'npm'}]) => {
+    this.untriggeredVersionRequests = Object.entries(myVersions).map(([name, {
+                                                                        version,
+                                                                        tag = 'latest',
+                                                                        provider = 'npm'}]) => {
       const versionProvider = versionProviders[provider];
-      return versionProvider.bind(versionProvider, {name, tag});
+      const untriggeredLatestVersionRequest = versionProvider.bind(versionProvider, {name, tag});
+      return async () => {
+        return {
+          name,
+          myVersion: version,
+          latestVersion: await untriggeredLatestVersionRequest()
+        };
+      };
     });
   }
 

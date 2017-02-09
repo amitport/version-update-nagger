@@ -1,12 +1,11 @@
 const clui = require('clui');
 const clc = require('cli-color');
+const escExit = require('esc-exit');
 
 class CliRenderer {
-  constructor(myVersions) {
-    this.myVersions = myVersions;
-  }
-
   init() {
+    escExit();
+
     new clui.Line()
       .padding(1)
       .column('name', 20, [clc.blue])
@@ -22,11 +21,11 @@ class CliRenderer {
       height: 'console'
     });
 
-    versions.forEach(({name, version}) => {
+    versions.forEach(({name, myVersion, latestVersion}) => {
       new clui.Line(lineBuffer)
         .padding(1)
         .column(name, 20, [clc.cyan])
-        .column(version, 20, [this.myVersions[name].version !== version ? clc.green : clc.magenta])
+        .column(latestVersion, 20, [myVersion !== latestVersion ? clc.green : clc.magenta])
         .store();
     });
 
