@@ -24,8 +24,8 @@ class CliRenderer {
     versions.forEach(({name, myVersion, latestVersion}) => {
       new clui.Line(lineBuffer)
         .padding(1)
-        .column(name, 20, [clc.cyan])
-        .column(latestVersion, 20, [myVersion !== latestVersion ? clc.green : clc.magenta])
+        .column(name, 20, [myVersion !== latestVersion ? clc.cyanBright : clc.cyan])
+        .column(latestVersion, 20, [myVersion !== latestVersion ? clc.redBright : clc.green])
         .store();
     });
 
