@@ -1,7 +1,7 @@
 [
   {
     "name": "node",
-    "myVersion": "7.3.0"
+    "myVersion": "7.5.0"
   },
   {
     "name": "angular",
@@ -15,6 +15,11 @@
     "name": "jspm",
     "tag": "beta",
     "myVersion": "0.17.0-beta.38"
+  },
+  {
+    "name": "koa",
+    "tag": "next",
+    "myVersion": "2.0.0-alpha.7"
   },
   {
     "name": "gulp-cli",

@@ -3,6 +3,7 @@ const request = require('request-promise-native');
 const clui = require('clui');
 const clc = require('cli-color');
 require('esc-exit')();
+require('process').on('unhandledRejection', console.error.bind(console));
 
 const storedVersions = JSON.parse(fs.readFileSync('my-versions.json', 'utf8'));
 const name2myVersion = storedVersions.reduce((res, {name, myVersion}) => {
@@ -70,7 +71,6 @@ async function checkVersions() {
   const versions = await Promise.all(
     storedVersions.map(({name, tag = 'latest', versionGetter = npmVersionGetter}) => versionGetter({name, tag}))
   );
-
   printVersions(versions);
 }
 
